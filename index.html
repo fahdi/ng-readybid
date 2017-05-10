@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>readybid app</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- JS -->
+    <script src="//code.angularjs.org/1.4.0/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="app" ng-controller="MainCtrl as main">
+
+<div class="flex-container">
+
+    <div class="container">
+
+        <div class="header">
+            <div class="header__inner">
+                <img class="logo" src="assets/white-logo.png" alt="Readybid Sample App Logo"/>
+                <div class="slogan">
+                    <h3>Readybid Sample App</h3>
+                    <p>An app to test the waters!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-item theform">
+            <div class="form-group">
+                <form name="sampleForm" novalidate>
+
+                    <div class="form-group"
+                         ng-class="{ 'ng-invalid': sampleForm.theText.$touched && sampleForm.theText.$invalid }">
+                        <label for="theText">Text</label>
+                        <input type="text" name="theText" class="form-control" maxlength="50" ng-model="theText"
+                               required>
+                        <div class="alert alert-danger" ng-messages="sampleForm.theText.$error"
+                             ng-if="sampleForm.theText.$touched && sampleForm.theText.$invalid ">
+                            <p ng-message="required">Text is required.</p>
+                            <p ng-message="max-length">Text is required.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{ 'ng-invalid': sampleForm.theNumber.$touched && sampleForm.theNumber.$invalid }">
+                        <label for="theNumber">Number</label>
+                        <input type="number" id="theNumber" name="theNumber" class="form-control"
+                               ng-model="theNumber"
+                               min="0" max="10000" step=".10" pattern="^\d+(?:\.\d{1,2})?$" required>
+                        <div class="alert alert-danger" ng-messages="sampleForm.theNumber.$error"
+                             ng-if="sampleForm.theNumber.$touched && sampleForm.theNumber.$invalid ">
+                            <span ng-messages-include="messages.html"></span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="flex-item thelog">
+            {{logs}}
+            <ul>
+                <li ng-repeat="i in logs track by $index">
+                    {{i | json : spacing}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <div class="copyrights"> &copy; readybid</div>
+            <button ng-click="handleSubmit()">Submit</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
