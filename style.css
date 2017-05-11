@@ -84,6 +84,7 @@ a:hover {
     line-height: 20px;
 }
 
+/* Form area starts here */
 .theform {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -156,6 +157,9 @@ input[type=number]:focus {
     color: white;
 }
 
+/* Form area ends here */
+
+/* Log area starts here */
 .thelog {
     background: #565656;
     height: 150px !important;
@@ -170,9 +174,12 @@ ul {
     margin: 5px;
     padding: 0;
 }
+
 li {
     list-style: none;
 }
+
+/* Log area ends here */
 
 /* Footer */
 .footer {

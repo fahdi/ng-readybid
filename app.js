@@ -11,36 +11,19 @@ angular
         }
 
         $scope.submit = function () {
-
             $scope.paylLoad.text = this.theText;
             $scope.paylLoad.number = this.theNumber;
-
-            //TODO: REMOVE LATER
-            console.log($scope.paylLoad);
 
             //Update the logs
             $scope.logs = loggerService.getAll();
 
-            //TODO: REMOVE LATER
-            console.log($scope.logs);
-
-            // Dummy calls
+            // Calling the httpbin. Read more at https://httpbin.org/
             $http.post('//httpbin.org/post', $scope.paylLoad).then(function (response) {
-
-                //TODO: REMOVE LATER
-                console.log(response);
                 var timeStamp = response.config.requestTimestamp;
-                //TODO: REMOVE LATER
-                console.log(timeStamp);
                 var dated = new Date(timeStamp);
                 var message = 'The request was made at ' + dated + ' with Text = ' + $scope.paylLoad.text + ' and Number = ' + $scope.paylLoad.number;
-
-                //TODO: REMOVE LATER
-                console.log(message);
-
                 loggerService.push(message);
             });
-
         }
 
         $scope.handleSubmit = function () {
@@ -83,12 +66,10 @@ angular
     }])
 
     .factory('timestampMarker404', ['$window', function (win) {
-
         var timestampMarker404 = {
             request: function (config) {
                 if (Math.round(config.data.number) === 404) {
                     // give up and show error
-                    //TODO: REMOVE LATER
                     console.warn("404");
                     win.alert("404 error. Please input a different number");
                 }
@@ -96,19 +77,12 @@ angular
                 return config;
             },
             response: function (response) {
-                //TODO: REMOVE LATER
-                console.log(response);
-
                 if (Math.round(response.data.json.number) === 404) {
                     response.status = 404;
-                    //TODO: REMOVE LATER
-                    console.log("Intercepted response with 404");
                     return response;
                 }
-
                 win.alert("It was a 200x sucess!");
                 return response;
-
             }
         };
         return timestampMarker404;

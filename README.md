@@ -18,3 +18,7 @@ When button is clicked HTTP call should be initiated and intercepted with:
 	- If number is any other HTTP call should resolve and an success message in dialog-like window should be shown
 
 - Interceptor should write to page (in list) timestamp of interception, text and number from inputs. This data MUST NOT be transferred back to controller through HTTP response, you HAVE to use some other channel of communication (direct call, service, messaging, some pattern – your choice)
+
+## Solution
+
+Done in simplified AngularJS with no build process. It's ready to be served as is. All code is simplified to make it performant.  
