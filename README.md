@@ -21,4 +21,8 @@ When button is clicked HTTP call should be initiated and intercepted with:
 
 ## Solution
 
-Done in simplified AngularJS with no build process. It's ready to be served as is. All code is simplified to make it performant.  
+Done in simplified AngularJS with no build process. It's ready to be served as is. All code is simplified to make it performant.
+  
+## View Live Demo
+  
+https://fahdi.github.io/ng-readybid/
