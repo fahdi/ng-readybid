@@ -47,12 +47,14 @@
                     <div class="form-group"
                          ng-class="{ 'ng-invalid': sampleForm.theNumber.$touched && sampleForm.theNumber.$invalid }">
                         <label for="theNumber">Number</label>
-                        <input type="number" id="theNumber" name="theNumber" class="form-control"
-                               ng-model="theNumber"
+                        <input type="number" name="theNumber" class="form-control" ng-model="theNumber"
                                min="0" max="10000" step=".10" pattern="^\d+(?:\.\d{1,2})?$" required>
                         <div class="alert alert-danger" ng-messages="sampleForm.theNumber.$error"
-                             ng-if="sampleForm.theNumber.$touched && sampleForm.theNumber.$invalid ">
-                            <span ng-messages-include="messages.html"></span>
+                             ng-if="sampleForm.theNumber.$touched && sampleForm.theNumber.$invalid">
+                            <p ng-message="required">Number is required</p>
+                            <p ng-message="min">The minimum should be 0</p>
+                            <p ng-message="max">The maximum should be 10000</p>
+                            <p ng-message="pattern">The maximum should be 10000 with two decimal places</p>
                         </div>
                     </div>
 
@@ -61,10 +63,9 @@
         </div>
 
         <div class="flex-item thelog">
-            {{logs}}
             <ul>
                 <li ng-repeat="i in logs track by $index">
-                    {{i | json : spacing}}
+                    {{i}}
                 </li>
             </ul>
         </div>
